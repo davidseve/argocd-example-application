@@ -4,6 +4,8 @@ metadata:
   name: discounts
   labels:
     deployment: discounts
+  annotations:
+    argocd.argoproj.io/sync-wave: "50"
 spec:
   ports:
     - port: 8080

@@ -6,6 +6,7 @@ metadata:
   namespace: openshift-gitops
 spec:
   destination:
+    server: https://kubernetes.default.svc
     namespace: openshift-gitops
   source:
     repoURL: https://github.com/davidseve/argocd-example-application.git
