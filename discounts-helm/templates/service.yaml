@@ -4,7 +4,6 @@ metadata:
   name: discounts
   labels:
     deployment: discounts
-    aa: aa
   annotations:
     argocd.argoproj.io/sync-wave: "50"
 spec:
