@@ -1,0 +1,17 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: appset-discounts-helm
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: openshift-gitops
+  source:
+    repoURL: https://github.com/davidseve/argocd-example-application.git
+    targetRevision: HEAD
+    path: ./discounts-helm 
+    helm: 
+      valueFiles: 
+        - values.yaml        
+  project: default
