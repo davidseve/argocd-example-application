@@ -23,8 +23,16 @@ oc extract secret/openshift-gitops-cluster -n openshift-gitops --to=-
 ## Deploy Argo CD application 
 
 ```
-oc apply -f argocd/appset-discount-kustomize.yaml
-oc apply -f argocd/appset-discount-helm.yaml
+oc apply -f argocd/app/app-discount.yaml
+```
+
+or
+
+
+## Deploy Argo CD AppOfApps 
+
+```
+oc apply -f argocd/appOfApps/appOfApps-discount.yaml
 ```
 
 Synchronize all the Argo CD applications
