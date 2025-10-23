@@ -10,7 +10,7 @@ spec:
       repoURL: https://github.com/davidseve/argocd-example-application.git
       revision: HEAD
       directories:
-      - path: apps
+      - path: apps/*
   template:
     metadata:
       name: 'discounts-helm-{{path.basename}}'
@@ -26,7 +26,3 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: openshift-gitops
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
