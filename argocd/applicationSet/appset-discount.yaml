@@ -1,0 +1,32 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-discounts-helm
+  namespace: openshift-gitops
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/davidseve/argocd-example-application.git
+      revision: HEAD
+      directories:
+      - path: apps
+  template:
+    metadata:
+      name: 'discounts-helm-{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/davidseve/argocd-example-application.git
+        targetRevision: HEAD
+        path: '{{path}}'
+        helm:
+          valueFiles:
+          - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: openshift-gitops
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
